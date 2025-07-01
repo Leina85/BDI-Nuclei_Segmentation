@@ -6,6 +6,50 @@ __pycache__/
 # C extensions
 *.so
 
+# Data files
+data/ #this stops anything in the data folder being added
+#and any other potential file types we dont want added:
+*.csv
+*.xlsx
+*.json
+*.sqlite
+*.db
+*.parquet
+
+# Large files
+*.zip
+*.tar.gz
+*.7z
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/settings.json
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Sensitive files
+config.ini
+.env
+secrets.txt
+
+
 # Distribution / packaging
 .Python
 build/
