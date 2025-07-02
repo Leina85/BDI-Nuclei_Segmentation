@@ -46,7 +46,6 @@ def seperate_tile_types(means):
 
     #for every tile, check avg, if surpasses threshhold (225 estimated from histogram data in find_means function) then store index in array
     for tile in range(len(means)):
-       print(means[tile])
        if means[tile] < 225:
             tissue_tiles.append(tile)
        else:
