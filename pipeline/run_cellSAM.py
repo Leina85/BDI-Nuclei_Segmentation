@@ -4,9 +4,7 @@ import matplotlib.pyplot as plt
 def cellSAM(tile):
     mask = cellsam_pipeline(tile, use_wsi=True, low_contrast_enhancement=False, gauge_cell_size=False)
     
-    plt.imshow(mask)
-    plt.imshow(tile)
-    
+    return mask 
     #masks = []
 
     #for tile in tqdm(tissue_tile):
