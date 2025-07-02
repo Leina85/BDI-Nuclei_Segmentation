@@ -3,10 +3,8 @@
   BDI work experience week cell segmentation tutorial using cellSAM
   <a href="#ref1" id="cite1">[1]</a> to process Uterus Tissue Histology images to identify nuclei
 </p>
-<img src="<img width="319" alt="image" src="https://github.com/user-attachments/assets/9e9fd8f7-9c97-4fad-9e42-4cb02e03b5e9" />
-" alt="image" height="300"/>
-<img src="<img width="313" alt="image" src="https://github.com/user-attachments/assets/b1919993-15ed-4c6c-8369-ea7fc44f0e34" />
-" alt="image" height="300"/>
+<img src="<img width="319" alt="Uterus Tissue Histology" src="![image](https://github.com/user-attachments/assets/60a72f52-77db-4f48-a739-01ab17467cfc)" alt="image" height="300"/>
+<img src="<img width="313" alt="Nuclei Identification using cellSAM" src="![image](https://github.com/user-attachments/assets/28979fd3-5aed-4a75-8389-29b5d6faad92)" alt="image" height="300"/>
 
 <hr />
 
