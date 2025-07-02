@@ -18,7 +18,7 @@ def tile_img(np_image, tile_size):
     #             tile_size (integer)
     # Returns: tiles (list of NumPy arrays representing each image tile)
     
-    # Determines number of tile along the height and width of the image
+    # Determines number of tiles along the height and width of the image
     h_tile_num = np_image.shape[0]//tile_size
     w_tile_num = np_image.shape[1]//tile_size
 
@@ -37,13 +37,14 @@ def tile_img(np_image, tile_size):
 
 def seperate_tile_types(means):
     # Parameters: means (list of NumPy arrays representing RGB image sections)
-    # Returns: tissue_tile (list of floats representing mean greyscale values)
+    # Returns: tissue_tile (list of integers relating to index of the tile containging tissue in the tiles array)
+    #          background_tile (list of integers relating to index of the tile containing no tissue in the tiles array)
     
     # Initialize lists to store the background tiles and tiles containing tissue
     background_tiles = []
     tissue_tiles = []
 
-    #for every tile, check avg, if surpasses threshhold then store index in array
+    #for every tile, check avg, if surpasses threshhold (225 estimated from histogram data in find_means function) then store index in array
     for tile in range(len(means)):
        print(means[tile])
        if means[tile] < 225:
