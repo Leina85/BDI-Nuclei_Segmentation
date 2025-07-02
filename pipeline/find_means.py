@@ -21,6 +21,6 @@ def find_means(tiles):
         
     # Plot histogram of mean greyscale values to visualise colour distribution
     plt.hist(means, bins = 250)
-    plt.show()
+    plt.savefig("results/mean_histogram.jpg")
     
     return means 
