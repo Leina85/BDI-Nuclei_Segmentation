@@ -26,6 +26,7 @@ tissue_tiles, background_tiles = seperate_tile_types(means)
 
 mask = cellSAM(tiles[tissue_tiles[967]])
 
-print("YUIO")
 plt.imshow(mask)
+plt.show()
 plt.imshow(tiles[tissue_tiles[967]])
+plt.show()
