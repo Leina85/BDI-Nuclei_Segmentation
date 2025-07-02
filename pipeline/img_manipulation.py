@@ -1,6 +1,16 @@
 from PIL import Image
 import numpy as np
 
+def read_img(image_path):
+    # Parameters: image_path (string of image adress)
+    # Returns: image (NumPy array of image)
+    
+    image = Image.open(image_path)
+    image = np.array(image)
+    
+    return image
+
+    
 def format_img(base_image, w_target, h_target):
     # Parameters: base_image (NumPy array representing the entire original histology image)
     #             w_target (integer)
