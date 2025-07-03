@@ -1,5 +1,7 @@
-from PIL import Image
 import numpy as np
+import cv2
+from PIL import Image
+from scipy import ndimage
 
 def read_img(image_path):
     # Parameters: image_path (string of image adress)
@@ -54,7 +56,7 @@ def seperate_tile_types(means):
     background_tiles = []
     tissue_tiles = []
 
-    #for every tile, check avg, if surpasses threshhold (225 estimated from histogram data in find_means function) then store index in array
+    # For every tile, check avg, if surpasses threshhold (225 estimated from histogram data in find_means function) then store index in array
     for tile in range(len(means)):
        if means[tile] < 225:
             tissue_tiles.append(tile)
@@ -62,3 +64,21 @@ def seperate_tile_types(means):
           background_tiles.append(tile)
           
     return tissue_tiles, background_tiles
+
+def format_tile(tile):
+    # Parameters: tile (NumPy array of tissue tile)
+    # Returns: dilated_img (NumPy array of bool values as a point of comparison to test the cellSAM mask)
+    
+    # Isolate red chanel (has clearest contrast between nuclei and the rest of the tissue)
+    r, g, b = cv2.split(tile)
+    # Change all pixel values to 0 and 255 based on a predetermined threshold (100)
+    r_channel = np.where(r >= 100, 255, 0).astype(np.uint8)
+    # Invert 0 and 255 pixel values to match cellSAM mask format
+    invert_r_channel = 255 - r_channel
+    
+    # Chang to boolean values for dilation (to revmove white spaces in nuclei)
+    bool_invert_r_channel = invert_r_channel.astype(bool)
+    dilated_img = ndimage.binary_dilation(bool_invert_r_channel, iterations=1)
+    
+    return dilated_img
+    
