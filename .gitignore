@@ -249,3 +249,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+data/GTEX-113JC-2226.jpg
+.gitignore
