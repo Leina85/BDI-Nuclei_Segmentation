@@ -11,6 +11,8 @@ from run_cellSAM import cellSAM
 
 Image.MAX_IMAGE_PIXELS = None
 
+chosen_index = 967
+
 #image = np.array(Image.open(r"C:\Users\Leina School\Desktop\Work Exp BDI\data\GTEX-113JC-2226.jpg"))
 #w_target, h_target = 55750, 40500
 #tile_size = 250
@@ -23,16 +25,17 @@ def main(image:str="/Users/Leina School/Desktop/Work Exp BDI/BDI-Nuclei_Segmenta
     tiles = tile_img(cropped_image, tile_size)
     means = find_means(tiles)
     tissue_tiles, background_tiles = seperate_tile_types(means)
-    mask = cellSAM(tiles[tissue_tiles[967]])
-
-    plt.figure()
-    plt.imshow(mask)
-    plt.savefig("./BDI-Nuclei_Segmentation/results/mask.jpg")
+    chosen_tile = tiles[tissue_tiles[chosen_index]]
+    mask = cellSAM(chosen_tile)
     
-    plt.figure()
-    plt.imshow(tiles[tissue_tiles[967]])
-    plt.savefig("./BDI-Nuclei_Segmentation/results/tissue_tile.jpg")
+    # Make correct data type
+    mask_to_save = (mask / mask.max() * 255).astype(np.uint8)
+    tile_to_save = (chosen_tile / chosen_tile.max() * 255).astype(np.uint8)
     
+    # Save images
+    Image.fromarray(mask_to_save).save("./BDI-Nuclei_Segmentation/results/mask.jpg", format="JPEG")
+    Image.fromarray(tile_to_save).save("./BDI-Nuclei_Segmentation/results/tissue_tile.jpg", format="JPEG")
 
+    
 if __name__ == "__main__":
     typer.run(main)
