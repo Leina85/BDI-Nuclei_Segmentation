@@ -4,7 +4,7 @@ import sys
 import typer
 from PIL import Image
 
-sys.path.append(r"C:\Users\Leina School\Desktop\Work Exp BDI\BDI-Nuclei_Segmentation\pipeline")
+sys.path.append("BDI-Nuclei_Segmentation/pipeline")
 from img_manipulation import read_img, format_img, tile_img, seperate_tile_types
 from find_means import find_means
 from run_cellSAM import cellSAM
@@ -17,7 +17,7 @@ chosen_index = 967
 #w_target, h_target = 55750, 40500
 #tile_size = 250
 
-def main(image:str="/Users/Leina School/Desktop/Work Exp BDI/BDI-Nuclei_Segmentation/data/GTEX-113JC-2226.jpg", w_target:int=55750, h_target:int=40500, tile_size:int=250):
+def main(image:str="BDI-Nuclei_Segmentation/data/GTEX-113JC-2226.jpg", w_target:int=55750, h_target:int=40500, tile_size:int=250):
     print('main called')
     image = read_img(image)
     print("image downloaded")
