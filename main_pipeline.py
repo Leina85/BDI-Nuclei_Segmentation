@@ -5,7 +5,7 @@ import typer
 from PIL import Image
 
 sys.path.append("BDI-Nuclei_Segmentation/pipeline")
-from img_manipulation import read_img, format_img, tile_img, seperate_tile_types
+from img_manipulation import read_img, crop_img, tile_img, seperate_tile_types
 from find_means import find_means
 from run_cellSAM import cellSAM
 
@@ -21,7 +21,7 @@ def main(image:str="BDI-Nuclei_Segmentation/data/GTEX-113JC-2226.jpg", w_target:
     print('main called')
     image = read_img(image)
     print("image downloaded")
-    cropped_image = format_img(image, w_target, h_target)
+    cropped_image = crop_img(image, w_target, h_target)
     tiles = tile_img(cropped_image, tile_size)
     means = find_means(tiles)
     tissue_tiles, background_tiles = seperate_tile_types(means)

@@ -13,7 +13,7 @@ def read_img(image_path):
     return image
 
     
-def format_img(base_image, w_target, h_target):
+def crop_img(base_image, w_target, h_target):
     # Parameters: base_image (NumPy array representing the entire original histology image)
     #             w_target (integer)
     #             h_target (integer)
@@ -81,4 +81,6 @@ def format_tile(tile):
     dilated_img = ndimage.binary_dilation(bool_invert_r_channel, iterations=1)
     
     return dilated_img
+
+def format_mask():
     
