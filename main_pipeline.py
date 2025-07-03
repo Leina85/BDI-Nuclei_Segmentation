@@ -25,10 +25,13 @@ def main(image:str="/Users/Leina School/Desktop/Work Exp BDI/BDI-Nuclei_Segmenta
     tissue_tiles, background_tiles = seperate_tile_types(means)
     mask = cellSAM(tiles[tissue_tiles[967]])
 
+    plt.figure()
     plt.imshow(mask)
-    plt.savefig("/results/mask.jpg")
+    plt.savefig("./BDI-Nuclei_Segmentation/results/mask.jpg")
+    
+    plt.figure()
     plt.imshow(tiles[tissue_tiles[967]])
-    plt.savefig("/results/tissue_tile.jpg")
+    plt.savefig("./BDI-Nuclei_Segmentation/results/tissue_tile.jpg")
     
 
 if __name__ == "__main__":
