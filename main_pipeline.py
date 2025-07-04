@@ -8,14 +8,11 @@ sys.path.append("BDI-Nuclei_Segmentation/pipeline")
 from img_manipulation import read_img, crop_img, tile_img, seperate_tile_types
 from find_means import find_means
 from run_cellSAM import cellSAM
+from evaluate_masks import segmentation_evaluate
 
 Image.MAX_IMAGE_PIXELS = None
 
-chosen_index = 967
-
-#image = np.array(Image.open(r"C:\Users\Leina School\Desktop\Work Exp BDI\data\GTEX-113JC-2226.jpg"))
-#w_target, h_target = 55750, 40500
-#tile_size = 250
+chosen_index = 100
 
 def main(image:str="BDI-Nuclei_Segmentation/data/GTEX-113JC-2226.jpg", w_target:int=55750, h_target:int=40500, tile_size:int=250):
     print('main called')
@@ -35,7 +32,9 @@ def main(image:str="BDI-Nuclei_Segmentation/data/GTEX-113JC-2226.jpg", w_target:
     # Save images
     Image.fromarray(mask_to_save).save("./BDI-Nuclei_Segmentation/results/mask.jpg", format="JPEG")
     Image.fromarray(tile_to_save).save("./BDI-Nuclei_Segmentation/results/tissue_tile.jpg", format="JPEG")
-
+    
+    dice_coefficient = segmentation_evaluate(mask, chosen_tile)
+    print(dice_coefficient)
     
 if __name__ == "__main__":
     typer.run(main)
