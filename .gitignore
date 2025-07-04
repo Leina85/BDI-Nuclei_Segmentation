@@ -18,6 +18,7 @@ data/ #this stops anything in the data folder being added
 
 # Large files
 *.zip
+*.svs
 *.tar.gz
 *.7z
 
@@ -48,7 +49,6 @@ Thumbs.db
 config.ini
 .env
 secrets.txt
-
 
 # Distribution / packaging
 .Python
@@ -249,5 +249,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-data/GTEX-113JC-2226.jpg
+data_jpeg/GTEX-113JC-2226.jpg
 .gitignore
