@@ -86,8 +86,8 @@ def format_mask(mask):
     # Parameters: tile (NumPy array of cellSAM mask output)
     # Returns: 
     
-    # Change all pixel values to 0 and 255 based on a predetermined threshold (100)
-    binary_mask = np.where(mask >= 100, 255, 0).astype(np.uint8)
+    # Change all pixel values to 0 and 255 based on a predetermined threshold (40)
+    binary_mask = np.where(mask != 0, 255, 0).astype(np.uint8)
     # Chang to boolean values to match dilated_img so they can be compared
     bool_mask = binary_mask.astype(bool)
     
