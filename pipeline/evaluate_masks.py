@@ -2,13 +2,13 @@ import numpy as np
 from img_manipulation import format_tile, format_mask
 from PIL import Image
 
-def segmentation_evaluate(cellSAM_mask, tile):
+def segmentation_evaluate(cellSAM_mask, tile, i):
     bool_tile = format_tile(tile)
     bool_mask = format_mask(cellSAM_mask)
     dice_coefficient = dice_coefficient_calc(bool_tile, bool_mask)
     
-    Image.fromarray(bool_tile).save("./BDI-Nuclei_Segmentation/results/bool_mask.jpg", format="JPEG")
-    Image.fromarray(bool_mask).save("./BDI-Nuclei_Segmentation/results/bool_tissue_tile.jpg", format="JPEG")
+    Image.fromarray(bool_tile).save(f"./BDI-Nuclei_Segmentation/results/bool_tissue_tile{i}.jpg", format="JPEG")
+    Image.fromarray(bool_mask).save(f"./BDI-Nuclei_Segmentation/results/bool_mask{i}.jpg", format="JPEG")
     
     return dice_coefficient
     
